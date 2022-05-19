@@ -6,12 +6,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 :root{
   --primary_color:#328284;
   --secondary_color:#F9A826;
   --gradient: linear-gradient(0deg, #55b88d 0%, var(--primary_color) 81%);
+  --border: border: 1px solid red;
 }
 /* general */
 a{
@@ -26,14 +28,90 @@ a{
 
 button{
   border: none;
+  padding: 0;
+  cursor: pointer;
 }
 /* end general */
 
 
 /* header */
 header{
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  
+  padding: 20px;
+  z-index: 20000;
+  color: white;
+  overflow: hidden;
+  transition: background-color ease .3s,
+  box-shadow  ease .7s;
 }
+
+header.fixed_header{
+  color: black;
+  background-color: #eae5e5;
+  box-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+header.fixed_header #sign_in_up_container button:first-child{
+  color: black;
+}
+
+
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  
+}
+
+#logo{
+  font-size: 2.3rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#logo span{
+  color: var(--secondary_color);
+}
+
+nav ul{
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-basis: 50%;
+}
+
+nav ul li{
+  list-style: none;
+  font-size: 1.1rem;
+  color: inherit;
+}
+
+nav #sign_in_up_container{
+  flex-basis: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
+#sign_in_up_container button{
+  background: transparent;
+  color: white;
+  font-size: 1.1rem;
+}
+
+#sign_in_up_container button:nth-child(2){
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: var(--secondary_color);
+  font-weight: 700;
+}
+
 /* end header */
 
 /* hero sec */
