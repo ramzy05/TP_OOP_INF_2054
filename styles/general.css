@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,500&display=swap');
 
 
-*{
+*, ::before,::after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,7 +11,9 @@
 
 :root{
   --primary_color:#328284;
+  --dark_color:#393852;
   --secondary_color:#F9A826;
+  --dark_sec_color:#e09d30;
   --gradient: linear-gradient(0deg, #55b88d 0%, var(--primary_color) 81%);
   --border: border: 1px solid red;
 }
@@ -41,36 +43,30 @@ header{
   left: 0;
   right: 0;
   width: 100%;
-  
   padding: 20px;
   z-index: 20000;
-  color: white;
   overflow: hidden;
   transition: background-color ease .3s,
   box-shadow  ease .7s;
 }
 
 header.fixed_header{
-  color: black;
   background-color: #eae5e5;
   box-shadow: 0px 0px 5px rgb(0, 0, 0);
-}
-header.fixed_header #sign_in_up_container button:first-child{
-  color: black;
-}
 
+}
 
 nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  
 }
 
 #logo{
   font-size: 2.3rem;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: white;
 }
 
 #logo span{
@@ -83,12 +79,33 @@ nav ul{
   align-items: center;
   justify-content: space-evenly;
   flex-basis: 50%;
+
 }
 
 nav ul li{
   list-style: none;
   font-size: 1.1rem;
-  color: inherit;
+  color: white;
+}
+
+nav ul a::after,
+#sign_in_up_container button:nth-child(1) a::after{
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 0%;
+  height: 3px;
+  background: var(--secondary_color);
+  transition: width ease .6s;
+}
+
+nav ul a:hover::after,
+#sign_in_up_container button:nth-child(1) a:hover::after{
+  width: 100%;
+}
+
+nav li.active a::after{
+  width: 100%;
 }
 
 nav #sign_in_up_container{
@@ -110,8 +127,25 @@ nav #sign_in_up_container{
   border-radius: 5px;
   background: var(--secondary_color);
   font-weight: 700;
+  transition: all ease .6s;
 }
 
+#sign_in_up_container button:nth-child(2):hover{
+  background: var(--dark_sec_color);
+  
+}
+
+
+header.fixed_header #sign_in_up_container button:first-child{
+  color: var(--dark_color);
+}
+.fixed_header  li a{
+  color: var(--dark_color);
+}
+
+.fixed_header  #logo{
+  color: var(--dark_color);
+}
 /* end header */
 
 /* hero sec */
@@ -148,7 +182,14 @@ nav #sign_in_up_container{
   color: white;
   font-size: 1.3em;
   font-weight: 400;
+  transition: all ease .6s;
 }
+
+.start_btn_cont button:hover{
+  background: var(--dark_sec_color);
+  
+}
+
 
 .start_btn_cont button:nth-child(1){
   margin-right: 2em;

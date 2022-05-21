@@ -11,3 +11,19 @@ window.addEventListener("scroll",(e)=>{
   }
 })
 /* end event on window scroll */
+
+/* active menu */
+let links = document.querySelectorAll('.links')
+let sections = document.querySelectorAll('section')
+
+function activeMenu(){
+  let len = sections.length
+  while(--len && window.scrollY + 96 < sections[len].offsetTop){}
+  links.forEach(link => link.classList.remove("active"))
+  links[len].classList.add("active")
+}
+
+activeMenu();
+window.addEventListener("scroll", activeMenu)
+
+/* end active menu */
